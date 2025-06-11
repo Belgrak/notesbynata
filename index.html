@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Заметки по категориям</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js');
+        }
+    </script>
+</head>
+<body>
+<h1>📒 Мои записи</h1>
+
+<nav>
+    <button onclick="switchTab('notes')">Заметки</button>
+    <button onclick="switchTab('recipes')">Рецепты</button>
+</nav>
+
+<!-- Заметки -->
+<section id="notesTab">
+    <form id="noteForm">
+        <input type="text" id="title" placeholder="Заголовок" required>
+        <textarea id="content" placeholder="Содержание..." required></textarea>
+        <select id="category">
+            <option value="Работа">Работа</option>
+            <option value="Дом">Дом</option>
+            <option value="Идеи">Идеи</option>
+            <option value="Разное">Разное</option>
+        </select>
+        <button type="submit">Сохранить</button>
+    </form>
+
+    <h2>Категория:</h2>
+    <select id="filter">
+        <option value="all">Все</option>
+        <option value="Работа">Работа</option>
+        <option value="Дом">Дом</option>
+        <option value="Идеи">Идеи</option>
+        <option value="Разное">Разное</option>
+    </select>
+
+    <div id="notes"></div>
+</section>
+
+<!-- Рецепты -->
+<section id="recipesTab" style="display:none;">
+    <form id="recipeForm">
+        <input type="text" id="recipeTitle" placeholder="Название рецепта" required>
+        <textarea id="recipeIngredients" placeholder="Ингредиенты..." required></textarea>
+        <textarea id="recipeSteps" placeholder="Шаги приготовления..." required></textarea>
+        <button type="submit">Добавить рецепт</button>
+    </form>
+
+    <div id="recipes"></div>
+</section>
+
+<script src="script.js"></script>
+</body>
+
+</html>
